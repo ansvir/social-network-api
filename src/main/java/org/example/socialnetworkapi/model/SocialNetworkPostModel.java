@@ -2,12 +2,15 @@ package org.example.socialnetworkapi.model;
 
 import org.example.socialnetworkapi.api.SocialNetworkPost;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.sql.Date;
 
 /**
  * {@link SocialNetworkPost} ORM model for database operations
  */
+
+@Table(name = "social_network_post")
 public class SocialNetworkPostModel {
 
     @Id
