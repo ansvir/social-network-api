@@ -1,5 +1,7 @@
 package org.example.socialnetworkapi.model;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.example.socialnetworkapi.api.SocialNetworkPost;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
@@ -14,10 +16,15 @@ import java.sql.Date;
 public class SocialNetworkPostModel {
 
     @Id
+    @NotNull
     private Long id;
+    @NotNull
     private Date postDate;
+    @Size(max = 50)
     private String author;
+    @Size(max = 256)
     private String content;
+    @NotNull
     private Long viewCount;
 
     public SocialNetworkPostModel(Date postDate, String author, String content, Long viewCount) {

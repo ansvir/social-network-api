@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import org.example.socialnetworkapi.api.SocialNetworkPost;
 import org.example.socialnetworkapi.mapper.SocialNetworkPostMapper;
 import org.example.socialnetworkapi.repository.SocialNetworkPostRepository;
+import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,11 @@ public class SocialNetworkPostServiceImpl implements SocialNetworkPostService {
 
     @Override
     public void deleteById(Long id) {
+        postRepository.deleteById(id);
+    }
 
+    @Override
+    public void deleteAll() {
+        postRepository.deleteAll();
     }
 }
