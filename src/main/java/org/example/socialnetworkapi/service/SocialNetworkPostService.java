@@ -14,7 +14,7 @@ public interface SocialNetworkPostService {
     Flux<SocialNetworkPost> findAll();
     Mono<SocialNetworkPost> findById(Long id);
     Flux<SocialNetworkPost> findTopX(Long amount);
-    void save(Mono<SocialNetworkPost> post);
+    Mono<SocialNetworkPost> save(Mono<SocialNetworkPost> post);
     void deleteById(Long id);
     void deleteAll();
 

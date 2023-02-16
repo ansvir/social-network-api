@@ -1,0 +1,1 @@
+DELETE FROM social_network_post;

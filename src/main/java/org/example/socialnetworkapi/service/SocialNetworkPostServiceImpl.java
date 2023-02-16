@@ -1,15 +1,16 @@
 package org.example.socialnetworkapi.service;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.example.socialnetworkapi.api.SocialNetworkPost;
 import org.example.socialnetworkapi.mapper.SocialNetworkPostMapper;
 import org.example.socialnetworkapi.repository.SocialNetworkPostRepository;
-import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 @Service
 public class SocialNetworkPostServiceImpl implements SocialNetworkPostService {
@@ -27,7 +28,7 @@ public class SocialNetworkPostServiceImpl implements SocialNetworkPostService {
         LOGGER.info("SocialNetworkPostServiceImpl has been initialized.");
     }
 
-    @PostConstruct
+    @PreDestroy
     public void tearDown() {
         LOGGER.info("SocialNetworkPostServiceImpl has been terminated.");
     }
@@ -48,17 +49,19 @@ public class SocialNetworkPostServiceImpl implements SocialNetworkPostService {
     }
 
     @Override
-    public void save(Mono<SocialNetworkPost> post) {
-        post.map(p -> postRepository.save(SocialNetworkPostMapper.toModel(p)));
+    public Mono<SocialNetworkPost> save(Mono<SocialNetworkPost> post) {
+        return post.flatMap(p -> postRepository.save(SocialNetworkPostMapper.toModel(p))
+                .map(SocialNetworkPostMapper::toApi));
     }
 
     @Override
     public void deleteById(Long id) {
-        postRepository.deleteById(id);
+        postRepository.deleteById(id).subscribe();
     }
 
     @Override
     public void deleteAll() {
-        postRepository.deleteAll();
+        postRepository.deleteAll().subscribe();
     }
+
 }

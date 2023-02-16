@@ -43,7 +43,7 @@ public class SocialNetworkPostController {
     }
 
     @PostMapping
-    public void createOrUpdate(Mono<SocialNetworkPost> post) {
+    public void createOrUpdate(@RequestBody Mono<SocialNetworkPost> post) {
         postService.save(post);
     }
 
@@ -52,9 +52,14 @@ public class SocialNetworkPostController {
         return postService.findById(id);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         postService.deleteById(id);
+    }
+
+    @DeleteMapping
+    public void deleteAll() {
+        postService.deleteAll();
     }
 
     @GetMapping("/top/{amount}")
