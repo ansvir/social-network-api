@@ -1,5 +1,5 @@
 ## Social Network Post API project
-### Version: 0.0.1-SNAPSHOT
+### Version: 0.0.2
 
 ### Description
 Project developed in illustration purposes. CRUD application with ability
@@ -13,7 +13,7 @@ Using command line:
 2. Navigate to project root folder and run: `mvn clean install` -> `mvn spring-boot:run`
 
 ### Brief project architecture
-```mermaid
+```
 +-----------------------+
 |        Server         |
 |                       |   
