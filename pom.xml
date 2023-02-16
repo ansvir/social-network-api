@@ -15,7 +15,7 @@
 	<description>Social Network API</description>
 	<properties>
 		<java.version>17</java.version>
-		<swagger.version>3.0.0</swagger.version>
+		<open-api.version>1.6.7</open-api.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -35,19 +35,9 @@
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-spring-webflux</artifactId>
-			<version>${swagger.version}</version>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-webflux-ui</artifactId>
+			<version>${open-api.version}</version>
 		</dependency>
 
 		<dependency>
