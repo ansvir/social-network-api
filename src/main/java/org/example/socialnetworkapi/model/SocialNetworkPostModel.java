@@ -4,22 +4,23 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.example.socialnetworkapi.api.SocialNetworkPost;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.sql.Date;
+import java.time.Instant;
 
 /**
  * {@link SocialNetworkPost} ORM model for database operations
  */
 
 @Table(name = "social_network_post")
-public class SocialNetworkPostModel {
+public class SocialNetworkPostModel implements Persistable<Long> {
 
     @Id
     @NotNull
     private Long id;
     @NotNull
-    private Date postDate;
+    private Instant postDate;
     @Size(max = 50)
     private String author;
     @Size(max = 256)
@@ -27,11 +28,16 @@ public class SocialNetworkPostModel {
     @NotNull
     private Long viewCount;
 
-    public SocialNetworkPostModel(Date postDate, String author, String content, Long viewCount) {
+    public SocialNetworkPostModel(Instant postDate, String author, String content, Long viewCount) {
         this.postDate = postDate;
         this.author = author;
         this.content = content;
         this.viewCount = viewCount;
+    }
+
+    @Override
+    public boolean isNew() {
+        return this.id == null;
     }
 
     public Long getId() {
@@ -42,11 +48,11 @@ public class SocialNetworkPostModel {
         this.id = id;
     }
 
-    public Date getPostDate() {
+    public Instant getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(Date postDate) {
+    public void setPostDate(Instant postDate) {
         this.postDate = postDate;
     }
 

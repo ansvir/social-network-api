@@ -1,8 +1,9 @@
 package org.example.socialnetworkapi.api;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.example.socialnetworkapi.model.SocialNetworkPostModel;
 
-import java.sql.Date;
+import java.time.Instant;
 import java.util.Objects;
 
 /**
@@ -12,13 +13,14 @@ import java.util.Objects;
  */
 public class SocialNetworkPost {
 
+    @JsonIgnoreProperties(allowSetters = true)
     private Long id;
-    private Date postDate;
+    private Instant postDate;
     private String author;
     private String content;
     private Long viewCount;
 
-    public SocialNetworkPost(Long id, Date postDate, String author, String content, Long viewCount) {
+    public SocialNetworkPost(Long id, Instant postDate, String author, String content, Long viewCount) {
         this.id = id;
         this.postDate = postDate;
         this.author = author;
@@ -38,11 +40,11 @@ public class SocialNetworkPost {
         this.id = id;
     }
 
-    public Date getPostDate() {
+    public Instant getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(Date postDate) {
+    public void setPostDate(Instant postDate) {
         this.postDate = postDate;
     }
 

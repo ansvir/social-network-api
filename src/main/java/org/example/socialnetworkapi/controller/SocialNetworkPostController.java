@@ -43,8 +43,8 @@ public class SocialNetworkPostController {
     }
 
     @PostMapping
-    public void createOrUpdate(@RequestBody Mono<SocialNetworkPost> post) {
-        postService.save(post);
+    public Mono<SocialNetworkPost> createOrUpdate(@RequestBody Mono<SocialNetworkPost> post) {
+        return postService.save(post);
     }
 
     @GetMapping("/{id}")

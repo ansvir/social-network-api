@@ -18,10 +18,8 @@ public class SocialNetworkPostMapper {
     }
 
     public static SocialNetworkPostModel toModel(SocialNetworkPost api) {
-        SocialNetworkPostModel model = new SocialNetworkPostModel(api.getPostDate(), api.getAuthor(),
+        return new SocialNetworkPostModel(api.getPostDate(), api.getAuthor(),
                 api.getContent(), api.getViewCount());
-        model.setId(api.getId());
-        return model;
     }
 
 }
