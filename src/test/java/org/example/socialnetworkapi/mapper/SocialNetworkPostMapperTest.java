@@ -26,7 +26,6 @@ public class SocialNetworkPostMapperTest {
 
         // when
         SocialNetworkPost result = SocialNetworkPostMapper.toApi(model);
-        result.setId(1L);
 
         // then
         given(api).usingRecursiveComparison().isEqualTo(result);
