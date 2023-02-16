@@ -91,4 +91,11 @@ public class SocialNetworkPostModel implements Persistable<Long> {
                 '}';
     }
 
+
+    public SocialNetworkPostModel copy() {
+            return new SocialNetworkPostModel(
+                    this.getPostDate(), this.getAuthor(),
+                    this.getContent(), this.getViewCount());
+    }
+
 }
